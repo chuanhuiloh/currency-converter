@@ -1,17 +1,26 @@
-import './App.css';
-import CurrencyDropdown from './components/CurrencyDropdown';
-import CurrencyContext from './contexts/CurrencyContext';
-import { useState } from 'react';
+import { useState } from "react";
+import "./App.css";
+import CurrencyDropdown from "./CurrencyDropdown";
+import CurrencyContext from "./contexts/CurrencyContext";
 
 function App() {
-  const [fromCurrency, setFromCurrency] = useState("EUR");
-  const [toCurrency, setToCurrency] = useState("USD");
+  const [currencyFrom, setCurrencyFrom] = useState("USD");
+  const [currencyTo, setCurrencyTo] = useState("SGD");
 
   return (
-    <CurrencyContext.Provider value={{ fromCurrency, setFromCurrency, toCurrency, setToCurrency }}>
+    <>
       <h1>Currency Converter</h1>
-      <CurrencyDropdown />
-    </CurrencyContext.Provider>
+      <CurrencyContext.Provider
+        value={{
+          currencyFrom,
+          setCurrencyFrom,
+          currencyTo,
+          setCurrencyTo,
+        }}
+      >
+        <CurrencyDropdown />
+      </CurrencyContext.Provider>
+    </>
   );
 }
 
